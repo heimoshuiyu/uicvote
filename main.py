@@ -27,6 +27,14 @@ def lookip():
     return render_template('lookup.html')
 
 
+@app.route('/lookup', methods=['POST'])
+def lookup_vote():
+    if not request.form.get('id'):
+        return redirect('/lookup')
+    else:
+        return redirect('/page/' + request.form.get('id'))
+
+
 @app.route('/page/<id>')
 def page(id):
     # 从数据库获取原始数据
@@ -35,7 +43,14 @@ def page(id):
 
     # 获取描述
     c.execute('SELECT describe FROM main WHERE id="%s"' % id)
-    describe = c.fetchall()[0][0]
+    try:
+        describe = c.fetchall()[0][0]
+    except IndexError:
+        conn.close()
+        return render_template('404.html')
+    except Exception as e:
+        print('%s: %s' % (type(e), str(e)))
+        return 
 
     # 获取是否需要信息
     c.execute('SELECT needinfo FROM main WHERE id="%s"' % id)
