@@ -7,7 +7,7 @@ import random
 
 ADDRESS = ('0.0.0.0', 8080)
 APP_SECRET_KEY = 'woshimima_blablablablabla_NicoNicoNI~~~~~'
-DONAME = 'https://sh.bakusaihazu.site:3900'
+DONAME = 'http://localhost:8080'
 
 app = Flask(__name__, static_url_path='')
 app.debug = False
@@ -57,8 +57,12 @@ def page(id):
     # 处理上下文
     message = session.get('message')
     session['message'] = ''
+
+    # 生成URL
+    url = DONAME + '/page/' + id
+
     return render_template('page.html', id=id, data=data, message=message, describe=describe,
-    needinfo=needinfo)
+    needinfo=needinfo, url=url)
 
 
 @app.route('/record/<id>', methods=['GET'])
