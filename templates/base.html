@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <title>UIC排课投票工具</title>
+        <link rel="stylesheet" href="/material.min.css">
+        <script src="/material.min.js"></script>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    </head>
+    <body>
+        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+            <header class="mdl-layout__header">
+              <div class="mdl-layout__header-row">
+                <!-- Title -->
+                <a href="/" style="text-decoration: none; color: white;">
+                  <span class="mdl-layout-title">UIC排课投票工具</span>
+                </a>
+                <!-- Add spacer, to align navigation to the right -->
+                <div class="mdl-layout-spacer"></div>
+                <!-- Navigation. We hide it in small screens. -->
+                <!-- <nav class="mdl-navigation mdl-layout--large-screen-only"> -->
+                <a class="mdl-navigation__link" href="">NicoNicoNi~</a>
+                </nav>
+              </div>
+            </header>
+            <div class="mdl-layout__drawer">
+              <span class="mdl-layout-title">功能列表</span>
+              <nav class="mdl-navigation">
+                <a class="mdl-navigation__link" href="/">首页</a>
+                <a class="mdl-navigation__link" href="/lookup">查看投票</a>
+                <a class="mdl-navigation__link" href="/create">发起投票</a>
+              </nav>
+            </div>
+            <main class="mdl-layout__content">
+              <div class="page-content">
+                <!-- Your content goes here -->
+                {% block content %}{% endblock %} 
+              </div>
+            </main>
+          </div>
+    </body>
+</html>

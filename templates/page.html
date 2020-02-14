@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="mdl-grid">
+    <div class="mdl-layout-spacer"></div>
+
+    <form action="/record/{{ id }}" method="POST">
+        <table class="mdl-data-table mdl-js-data-table  mdl-shadow--2dp">
+            
+            <thead>
+                <tr>
+                    <th class="mdl-data-table__cell--non-numeric" colspan="8">
+                        {% if message %}
+                            <span class="mdl-chip mdl-chip--contact">
+                                <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white">M</span>
+                                <span class="mdl-chip__text"> Message: {{ message }}</span>
+                            </span>
+                        {% else %}
+                            <span class="mdl-chip mdl-chip--contact">
+                                <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white">H</span>
+                                <span class="mdl-chip__text">
+                                    Hint: This page URL is <a href="http://{{ doname }}:{{ port }}/page/{{ id }}">http://{{ doname }}:{{ port }}/page/{{ id }}</a> You can share this link with your friend and let them vote!
+                                </span>
+                            </span>
+                        {% endif %}
+                    </th>
+                </tr>
+                {% if describe %}
+                    <tr>
+                        <th class="mdl-data-table__cell--non-numeric" colspan="8">
+                            <span class="mdl-chip mdl-chip--contact">
+                                <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white">D</span>
+                                <span class="mdl-chip__text"> Describe: {{ describe }}</span>
+                            </span>
+                        </th>
+                    </tr>
+                {% endif %}
+                <tr>
+                    <th class="mdl-data-table__cell--non-numeric">Time Range</th>
+                    {% for i in ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'] %}
+                    <th class="mdl-data-table__cell--non-numeric">{{ i }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for x in range(14) %}
+                <tr>
+                    <td class="mdl-data-table__cell--non-numeric">
+                        {{ x + 8}}-{{x + 9}}点
+                    </td>
+                    {% for y in range(7) %}
+                        <td class="mdl-data-table__cell--non-numeric">
+                            <label class="mdl-checkbox mdl-js-checkbox">
+                                <input type="checkbox" name="{{ x }}-{{ y }}" class="mdl-checkbox__input">
+                                <span class="mdl-checkbox__label">
+                                    
+                                    {% if data[x][y] == 0 %}
+                                        <span class="mdl-badge" data-badge="空">{{ data[x][y] }}</span>
+                                    {% else %}
+                                        {{ data[x][y] }}
+                                    {% endif %}
+
+                                </span>
+                            </label>
+                        </td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+
+                <tr>
+                    <td colspan="8">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="text" name="username">
+                            {% if needinfo %}
+                            <label class="mdl-textfield__label">姓名(必填) Name (Needed)</label>
+                            {% else %}
+                            <label class="mdl-textfield__label">姓名 Name</label>
+                            {% endif %}
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="8">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" name="userid">
+                            {% if needinfo %}
+                            <label class="mdl-textfield__label">学号(必填) Student ID (Needed)</label>
+                            {% else %}
+                            <label class="mdl-textfield__label">学号 Student ID</label>
+                            {% endif %}
+                            <span class="mdl-textfield__error">请输入纯数字的学号 Please input pure number</span>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="6">
+                        <input type="submit" class="mdl-button mdl-js-button mdl-button--accent mdl-button--raised"
+                        formaction="/result/{{ id }}" value="查看结果 See Result">
+                    </td>
+                    <td colspan="2">
+                        <input type="submit" class="mdl-button mdl-js-button mdl-button--accent mdl-button--raised">
+                    </td>
+                </tr>
+            </tbody>
+        
+        </table>
+    </form>
+
+    <div class="mdl-layout-spacer">
+</div>
+{% endblock %}

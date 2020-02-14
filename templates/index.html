@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="mdl-grid">
+  <div class="mdl-cell mdl-cell--4-col">
+
+    <div class="mdl-card mdl-shadow--2dp">
+      <div class="mdl-card__supporting-text">
+        首页
+      </div>
+      <div class="mdl-card__actions">
+        <a href="/" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">进入首页</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="mdl-cell mdl-cell--4-col">
+    <div class="mdl-card mdl-shadow--2dp">
+      <div class="mdl-card__supporting-text">
+        查询投票
+      </div>
+      <div class="mdl-card__actions">
+        <a href="lookup" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">查询</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="mdl-cell mdl-cell--4-col">
+    <div class="mdl-card mdl-shadow--2dp">
+      <div class="mdl-card__supporting-text">
+        发布投票
+      </div>
+      <div class="mdl-card__actions">
+        <a href="create" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">发布</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+{% endblock %}

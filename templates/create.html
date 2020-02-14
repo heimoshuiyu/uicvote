@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="mdl-grid">
+    <div class="mdl-layout-spacer"></div>
+
+    <div class="mdl-cell mdl-cell--4-col">
+        <form action='/create' method="POST">
+            <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+                <tr>
+                    <td>
+                        <span class="mdl-chip">
+                            <span class="mdl-chip__text">Enter the describe below. (e.g.) Vote at the time you are free </span>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="mdl-chip">
+                            <span class="mdl-chip__text">简单描述该投票，如：请在您允许参加活动的时间段打勾</span>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="text" name="describe">
+                            <label class="mdl-textfield__label">Simply describe the vote</label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+                            <input type="checkbox" name="needinfo" class="mdl-checkbox__input" checked>
+                            <span class="mdl-checkbox__label">必须填写个人信息 Need Student Info</span>
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+    <div class="mdl-layout-spacer"></div>
+</div>
+{% endblock %}

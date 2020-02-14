@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="mdl-grid">
+    <div class="mdl-layout-spacer"></div>
+
+        <table class="mdl-data-table mdl-js-data-table  mdl-shadow--2dp">
+            
+            <thead>
+            <tr>
+                <th class="mdl-data-table__cell--non-numeric">Time Range</th>
+                <th class="mdl-data-table__cell--non-numeric">User Name</th>
+                <th class="mdl-data-table__cell--non-numeric">User ID</th>
+            </tr>
+            </thead>
+
+            <tbody>
+                {% for row in result %}
+                <tr>
+                    {% for i in range(3) %}
+                    <td class="mdl-data-table__cell--non-numeric">{{ row[i] }}</td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+
+                <tr>
+                    <td colspan="3">
+                        <a href="/page/{{ id }}">
+                            <button value="Return" class="mdl-button mdl-js-button mdl-button--accent mdl-button--raised">
+                                返回 Return
+                            </button>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        
+        </table>
+
+    <div class="mdl-layout-spacer"></div>
+</div>
+{% endblock %}
