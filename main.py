@@ -5,7 +5,6 @@ import random
 
 
 ADDRESS = ('0.0.0.0', 8080)
-DONAME = 'example.com'
 APP_SECRET_KEY = 'woshimima_blablablablabla_NicoNicoNI~~~~~'
 
 
@@ -54,7 +53,7 @@ def page(id):
     message = session.get('message')
     session['message'] = ''
     return render_template('page.html', id=id, data=data, message=message, describe=describe,
-    needinfo=needinfo, doname=DONAME, port=ADDRESS[1])
+    needinfo=needinfo)
 
 
 @app.route('/record/<id>', methods=['GET'])
