@@ -1,4 +1,5 @@
-from flask import Flask, render_template, request, redirect, session
+from flask import Flask, render_template, request, session
+from flask import redirect as _redirect
 import sqlite3
 import os
 import random
@@ -6,10 +7,14 @@ import random
 
 ADDRESS = ('0.0.0.0', 8080)
 APP_SECRET_KEY = 'woshimima_blablablablabla_NicoNicoNI~~~~~'
-
+DONAME = 'https://sh.bakusaihazu.site:3900'
 
 app = Flask(__name__, static_url_path='')
 app.debug = False
+
+# 解决flask作为caddy后端，caddy是https结果被flask跳转到同一端口http的尴尬
+def redirect(url):
+    return _redirect(DONAME + url)
 
 
 @app.route('/')
