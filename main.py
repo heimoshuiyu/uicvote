@@ -17,6 +17,10 @@ def redirect(url):
     return _redirect(DONAME + url)
 
 
+@app.route('/about')
+def about_page():
+    return render_template('about.html')
+
 @app.route('/')
 def index():
     return render_template('index.html')
